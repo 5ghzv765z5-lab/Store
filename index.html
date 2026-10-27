@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>محمصة نَبْع – متجر قهوة مختصة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;600&family=Reem+Kufi:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f5f0;--surface:#fff;--ink:#17262b;--muted:#5d6b6e;--green:#1f4d3a;--on-green:#f6f5f0;--gold:#e8a33d;--line:#dcdfd6;--tile:#e3ebe2;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a1a;--surface:#172423;--ink:#eef0e8;--muted:#9fb0aa;--green:#8fc9a8;--on-green:#0f1d1a;--gold:#f0b350;--line:#2a3b39;--tile:#1f3330}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Readex Pro",Tahoma,sans-serif;line-height:1.7}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1080px;margin:auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:"Reem Kufi",Tahoma,sans-serif;font-size:1.7rem;color:var(--green);text-decoration:none}
+nav a{color:var(--ink);text-decoration:none;margin-inline-start:20px;font-size:.95rem}
+.cartbtn{background:var(--green);color:var(--on-green);border:0;border-radius:999px;padding:8px 18px;font-weight:600}
+.cartbtn b{background:var(--gold);color:#17262b;border-radius:999px;padding:0 8px;margin-inline-start:6px}
+.hero{padding:56px 0 40px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+.hero h1{font-family:"Reem Kufi",Tahoma,sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.2;margin:0 0 16px;color:var(--green)}
+.hero p{color:var(--muted);max-width:44ch;margin:0 0 24px;font-weight:300}
+.cta{display:inline-block;background:var(--gold);color:#17262b;border:0;border-radius:10px;padding:12px 26px;font-weight:600;text-decoration:none}
+.hero-art{background:var(--green);border-radius:50% 50% 12px 12px;aspect-ratio:1/1.1;display:grid;place-items:center}
+.hero-art svg{width:62%}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}
+.chip{background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 18px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+h2{font-size:1.5rem;margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px;margin-bottom:56px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.tile{background:var(--tile);aspect-ratio:4/3;display:grid;place-items:center}
+.tile svg{width:42%}
+.info{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.info h3{margin:0;font-size:1.05rem}
+.info small{color:var(--muted)}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px}
+.price{font-weight:600;font-size:1.1rem}
+.add{background:var(--green);color:var(--on-green);border:0;border-radius:8px;padding:6px 14px}
+.perks{background:var(--green);color:var(--on-green)}
+.perks .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;padding-top:36px;padding-bottom:36px}
+.perks b{display:block;font-size:1.05rem}
+.perks span{font-weight:300;opacity:.85;font-size:.92rem}
+footer{padding:28px 0;color:var(--muted);font-size:.9rem;text-align:center}
+.shade{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .2s;z-index:10}
+.shade.on{opacity:1;pointer-events:auto}
+aside{position:fixed;top:0;bottom:0;left:0;width:min(400px,100%);background:var(--bg);z-index:11;transform:translateX(-102%);transition:transform .25s;display:flex;flex-direction:column;padding:calc(16px + env(safe-area-inset-top,0px)) 20px calc(16px + env(safe-area-inset-bottom,0px))}
+aside.on{transform:none}
+aside header{position:static;border:0;padding:0}
+aside header .wrap{padding:0;height:auto;margin-bottom:12px}
+.x{background:none;border:0;font-size:1.6rem;color:var(--ink)}
+#items{flex:1;overflow:auto}
+.line{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.line .t{width:52px;height:52px;border-radius:8px;background:var(--tile);display:grid;place-items:center;flex:none}
+.line .t svg{width:60%}
+.line .n{flex:1;font-size:.95rem}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.empty{color:var(--muted);text-align:center;padding:40px 0}
+.total{display:flex;justify-content:space-between;font-weight:600;font-size:1.15rem;padding:14px 0}
+.pay{width:100%;background:var(--gold);color:#17262b;border:0;border-radius:10px;padding:12px;font-weight:600}
+.pay:disabled{opacity:.4;cursor:not-allowed}
+#toast{position:fixed;inset-inline:0;bottom:calc(24px + env(safe-area-inset-bottom,0px));margin:auto;width:max-content;max-width:90%;background:var(--ink);color:var(--bg);padding:10px 20px;border-radius:10px;opacity:0;transition:opacity .2s;z-index:20;pointer-events:none}
+#toast.on{opacity:1}
+@media(max-width:700px){.hero{grid-template-columns:1fr}.hero-art{max-width:260px;margin:auto}nav{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="bag" viewBox="0 0 60 70"><path d="M10 18h40l4 48H6z" fill="currentColor"/><path d="M20 18c0-8 4-12 10-12s10 4 10 12" fill="none" stroke="currentColor" stroke-width="4"/><ellipse cx="30" cy="40" rx="8" ry="11" fill="#f6f5f0" opacity=".9"/><path d="M30 30c-3 7 3 13 0 20" stroke="currentColor" stroke-width="2.5" fill="none"/></symbol>
+<symbol id="mug" viewBox="0 0 60 60"><path d="M8 14h34v26a14 14 0 0 1-14 14h-6A14 14 0 0 1 8 40z" fill="currentColor"/><path d="M42 20h6a8 8 0 0 1 0 18h-6" fill="none" stroke="currentColor" stroke-width="5"/></symbol>
+<symbol id="tool" viewBox="0 0 60 60"><path d="M6 10h48L38 36v16H22V36z" fill="currentColor"/><rect x="4" y="6" width="52" height="6" rx="3" fill="currentColor"/></symbol>
+</svg>
+
+<header><div class="wrap">
+<a class="logo" href="#top">نَبْع</a>
+<nav><a href="#shop">المنتجات</a><a href="#about">لماذا نبع</a></nav>
+<button class="cartbtn" id="open" aria-label="فتح السلة">السلة <b id="count">0</b></button>
+</div></header>
+
+<main id="top">
+<div class="wrap hero">
+<div>
+<h1>قهوة محمّصة<br>على يد أصحابها</h1>
+<p>نختار الحبوب من مزارع صغيرة، نحمّصها كل أسبوع، ونرسلها إليك طازجة خلال يومين.</p>
+<a class="cta" href="#shop">تسوّق الآن</a>
+</div>
+<div class="hero-art" style="color:var(--gold)"><svg><use href="#bag"/></svg></div>
+</div>
+
+<div class="wrap" id="shop">
+<h2>المنتجات</h2>
+<div class="filters" id="filters" role="group" aria-label="التصنيفات"></div>
+<div class="grid" id="grid"></div>
+</div>
+
+<section class="perks" id="about"><div class="wrap">
+<div><b>تحميص أسبوعي</b><span>تاريخ التحميص مكتوب على كل كيس.</span></div>
+<div><b>توصيل خلال يومين</b><span>مجاني للطلبات فوق 40 دولاراً.</span></div>
+<div><b>إرجاع خلال 14 يوماً</b><span>إن لم تعجبك القهوة، نعيد لك المبلغ.</span></div>
+</div></section>
+</main>
+<footer>© 2026 محمصة نبع – متجر تجريبي لأغراض العرض</footer>
+
+<div class="shade" id="shade"></div>
+<aside id="cart" aria-label="سلة التسوق" aria-hidden="true">
+<header><div class="wrap"><h2>سلتك</h2><button class="x" id="close" aria-label="إغلاق السلة">×</button></div></header>
+<div id="items"></div>
+<div class="total"><span>المجموع</span><span id="total">0 $</span></div>
+<button class="pay" id="pay">إتمام الطلب</button>
+</aside>
+<div id="toast" role="status"></div>
+
+<script>
+var P=[
+{id:1,n:"إثيوبيا يرغاتشيفي",d:"زهري وحمضي – 250 غ",p:16,c:"بن",i:"bag",col:"#1f4d3a"},
+{id:2,n:"كولومبيا هويلا",d:"شوكولاتة وكراميل – 250 غ",p:14,c:"بن",i:"bag",col:"#8a5a2b"},
+{id:3,n:"خلطة الصباح",d:"متوازنة للإسبريسو – 500 غ",p:22,c:"بن",i:"bag",col:"#17262b"},
+{id:4,n:"قمع V60 سيراميك",d:"حجم 02 – أبيض",p:19,c:"أدوات",i:"tool",col:"#1f4d3a"},
+{id:5,n:"مطحنة يدوية",d:"طواحين فولاذية – 30 غ",p:48,c:"أدوات",i:"tool",col:"#17262b"},
+{id:6,n:"فلاتر ورقية",d:"100 ورقة – مقاس 02",p:6,c:"أدوات",i:"tool",col:"#8a5a2b"},
+{id:7,n:"كوب فخّار مطفي",d:"300 مل – صناعة يدوية",p:12,c:"أكواب",i:"mug",col:"#1f4d3a"},
+{id:8,n:"كوب سفر معزول",d:"350 مل – يحفظ الحرارة 6 ساعات",p:24,c:"أكواب",i:"mug",col:"#17262b"}];
+var cats=["الكل","بن","أدوات","أكواب"],cat="الكل",cart={};
+var $=function(s){return document.querySelector(s)};
+try{cart=JSON.parse(localStorage.getItem("nab-cart")||"{}")||{}}catch(e){cart={}}
+function save(){try{localStorage.setItem("nab-cart",JSON.stringify(cart))}catch(e){}}
+function ico(p){return '<svg style="color:'+p.col+'"><use href="#'+p.i+'"/></svg>'}
+function toast(m){var t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.h);toast.h=setTimeout(function(){t.classList.remove("on")},1800)}
+function drawFilters(){$("#filters").innerHTML=cats.map(function(c){return '<button class="chip" aria-pressed="'+(c===cat)+'" data-c="'+c+'">'+c+'</button>'}).join("")}
+function drawGrid(){$("#grid").innerHTML=P.filter(function(p){return cat==="الكل"||p.c===cat}).map(function(p){
+return '<article class="card"><div class="tile">'+ico(p)+'</div><div class="info"><h3>'+p.n+'</h3><small>'+p.d+'</small><div class="row"><span class="price">'+p.p+' $</span><button class="add" data-id="'+p.id+'">أضف للسلة</button></div></div></article>'}).join("")}
+function drawCart(){
+var ids=Object.keys(cart).filter(function(k){return cart[k]>0}),sum=0,n=0;
+$("#items").innerHTML=ids.length?ids.map(function(k){var p=P.filter(function(x){return x.id==k})[0];sum+=p.p*cart[k];n+=cart[k];
+return '<div class="line"><div class="t">'+ico(p)+'</div><div class="n">'+p.n+'<br><small>'+p.p+' $</small></div><div class="qty"><button data-m="'+k+'" aria-label="إنقاص">−</button><span>'+cart[k]+'</span><button data-a="'+k+'" aria-label="زيادة">+</button></div></div>'}).join(""):'<p class="empty">سلتك فارغة. أضف منتجاً من القائمة.</p>';
+$("#total").textContent=sum+" $";$("#count").textContent=n;$("#pay").disabled=!ids.length;save()}
+function panel(on){$("#cart").classList.toggle("on",on);$("#shade").classList.toggle("on",on);$("#cart").setAttribute("aria-hidden",!on)}
+document.addEventListener("click",function(e){
+var t=e.target.closest("button");if(!t)return;
+if(t.dataset.c){cat=t.dataset.c;drawFilters();drawGrid()}
+if(t.dataset.id){cart[t.dataset.id]=(cart[t.dataset.id]||0)+1;drawCart();toast("أُضيف إلى السلة")}
+if(t.dataset.a){cart[t.dataset.a]++;drawCart()}
+if(t.dataset.m){cart[t.dataset.m]--;drawCart()}
+if(t.id==="open")panel(true);
+if(t.id==="close")panel(false);
+if(t.id==="pay"){cart={};drawCart();panel(false);toast("شكراً! هذا متجر تجريبي، لم يُنفَّذ أي دفع.")}
+});
+$("#shade").addEventListener("click",function(){panel(false)});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")panel(false)});
+drawFilters();drawGrid();drawCart();
+</script>
+</body>
+</html>
